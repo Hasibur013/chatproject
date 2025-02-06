@@ -1,0 +1,72 @@
+# chat/templates/chat/chat_room.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Room</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .message-container {
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .message img {
+            max-width: 200px;
+            margin-top: 10px;
+        }
+        .message audio {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="message-container">
+            {% for message in messages %}
+            <div class="message">
+                <strong>{{ message.user.username }}</strong>
+                <small class="text-muted">{{ message.timestamp }}</small>
+                {% if message.content %}
+                    <p>{{ message.content }}</p>
+                {% endif %}
+                {% if message.image %}
+                    <img src="{{ message.image.url }}" alt="Shared image">
+                {% endif %}
+                {% if message.audio %}
+                    <audio controls>
+                        <source src="{{ message.audio.url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.content.label_tag }}
+                {{ form.content }}
+            </div>
+            <div class="mb-3">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+            </div>
+            <div class="mb-3">
+                {{ form.audio.label_tag }}
+                {{ form.audio }}
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
