@@ -1,0 +1,98 @@
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.chat-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+.chat-message {
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    color: #333;
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+}
+
+/* Textarea styling */
+textarea {
+    border-radius: 20px;
+    padding: 12px;
+    resize: none;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.input-group {
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.input-group-append .btn {
+    border-radius: 0 20px 20px 0;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.input-group-append .btn:hover {
+    background-color: #0056b3;
+}
+
+.input-group-append .btn-light {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.input-group-append .btn-light:hover {
+    background-color: #e9ecef;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
